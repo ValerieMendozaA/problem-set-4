@@ -19,9 +19,8 @@ from datetime import datetime
 g = nx.Graph()
 
 # Set up your dataframe(s) -> the df that's output to a CSV should include at least the columns 'left_actor_name', '<->', 'right_actor_name'
-
 def compute_network_centrality():
-    data_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'imdb_movies.json')
+data_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'imdb_movies.json')
 with open(data_path, 'r') as in_file:
         # Don't forget to comment your code
         for line in in_file:
@@ -39,8 +38,12 @@ with open(data_path, 'r') as in_file:
             ## Starting with the first actor in the list, generate pairs with all subsequent actors
             ## then continue to second actor in the list and repeat
 
-            i = 0 #counter
-            for left_actor_id, left_actor_name in this_movie.get('actors', []): for right_actor_id, right_actor_name in this_movie['actors'][i+1:]:
+  i = 0 #counter
+ for left_actor_id, left_actor_name in this_movie.get('actors', []):       
+
+
+
+for right_actor_id, right_actor_name in this_movie['actors'][i+1:]:
 
                     # Get the current weight, if it exists
                     if g.has_edge(left_actor_id, right_actor_id):
