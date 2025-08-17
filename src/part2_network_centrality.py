@@ -47,9 +47,8 @@ with open(data_path, 'r') as in_file:
                         g[left_actor_id][right_actor_id]['weight'] += 1
                     else:
                         # Add an edge for these actors
-                        g.add_edge(left_actor_id, right_actor_id, weight=1)
-
-                i += 1
+                        g.add_edge(left_actor_id, right_actor_id, weight=1) 
+                     i += 1
 
     # Print the info below
     print("Nodes:", len(g.nodes))
@@ -60,11 +59,9 @@ with open(data_path, 'r') as in_file:
 
     # Prepare the dataframe
     output_data = []
-    for actor_id, centrality in top_10:
-        actor_name = g.nodes[actor_id]['name']
-        output_data.append({"actor_id": actor_id, "actor_name": actor_name, "centrality": centrality})
-
-    df = pd.DataFrame(output_data)
+    for actor_id, centrality in top_10: actor_name = g.nodes[actor_id]['name']
+   output_data.append({"actor_id": actor_id, "actor_name": actor_name, "centrality": centrality})
+ df = pd.DataFrame(output_data)
 
     # Output the final dataframe to a CSV named 'network_centrality_{current_datetime}.csv' to `/data`
     out_path = os.path.join(os.path.dirname(__file__), '..', 'data', f'network_centrality_{datetime.now().isoformat()}.csv')
